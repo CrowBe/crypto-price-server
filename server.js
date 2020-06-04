@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // CORS middleware
-app.use(cors({origin: "https://build-six-delta.now.sh/"}))
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.send('Welcome')
