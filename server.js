@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 const Pusher = require('pusher');
+const cors = require('cors')
 
 require('dotenv').config();
 const appId = process.env.REACT_APP_PUSHER_ID;
@@ -25,19 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // CORS middleware
-app.use((req, res, next) => {
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', false)
-    // Pass to next layer of middleware
-    next()
-});
+app.use(cors({origin: "https://build-six-delta.now.sh/"}))
 
 app.get('/', (req, res) => {
     res.send('Welcome')
