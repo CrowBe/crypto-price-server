@@ -9,7 +9,7 @@ const appId = process.env.REACT_APP_PUSHER_ID;
 const appKey = process.env.REACT_APP_PUSHER_KEY;
 const appSecret = process.env.REACT_APP_PUSHER_SECRET;
 const cluster = process.env.REACT_APP_PUSHER_CLUSTER;
-const port = 5000;
+const port = process.env.PORT;
 
 //initialize Pusher with your appId, key, secret and cluster
 const pusher = new Pusher({
@@ -39,8 +39,6 @@ app.use((req, res, next) => {
     next()
 });
 
-app.set('port', (5000))
-
 app.get('/', (req, res) => {
     res.send('Welcome')
 });
@@ -54,6 +52,6 @@ app.post('/prices/new', (req, res) => {
     res.sendStatus(200);
 });
 
-app.listen(app.get('port'), () => {
-    console.log('Node app is running on port', app.get('port'))
+app.listen(port, () => {
+    console.log('Node app is running on port', port)
 })
