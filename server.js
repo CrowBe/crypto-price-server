@@ -9,7 +9,7 @@ const appId = process.env.REACT_APP_PUSHER_ID;
 const appKey = process.env.REACT_APP_PUSHER_KEY;
 const appSecret = process.env.REACT_APP_PUSHER_SECRET;
 const cluster = process.env.REACT_APP_PUSHER_CLUSTER;
-const port = process.env.REACT_APP_SERVER_PORT;
+const port = 5000;
 
 //initialize Pusher with your appId, key, secret and cluster
 const pusher = new Pusher({
