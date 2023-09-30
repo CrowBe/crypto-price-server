@@ -6,10 +6,10 @@ const Pusher = require('pusher');
 const cors = require('cors')
 
 require('dotenv').config();
-const appId = process.env.REACT_APP_PUSHER_ID;
-const appKey = process.env.REACT_APP_PUSHER_KEY;
-const appSecret = process.env.REACT_APP_PUSHER_SECRET;
-const cluster = process.env.REACT_APP_PUSHER_CLUSTER;
+const appId = process.env.PUSHER_ID;
+const appKey = process.env.PUSHER_KEY;
+const appSecret = process.env.PUSHER_SECRET;
+const cluster = process.env.PUSHER_CLUSTER;
 const port = process.env.PORT;
 
 //initialize Pusher with your appId, key, secret and cluster
