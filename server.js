@@ -18,7 +18,7 @@ const pusher = new Pusher({
     key: appKey,
     secret: appSecret,
     cluster: cluster,
-    encrypted: true
+    useTLS: true
 });
 
 // Body parser middleware
@@ -35,9 +35,11 @@ app.get('/', (req, res) => {
 // API route in which the price information will be sent to from the clientside
 app.post('/prices/new', (req, res) => {
     // Trigger the 'prices' event to the 'coin-prices' channel
-    pusher.trigger( 'coin-prices', 'prices', {
-        prices: req.body.prices
-    });
+    req.body.json().then((res) => {
+        pusher.trigger( 'coin-prices', 'prices', {
+            ...res
+        });
+    }).catch((err) => console.error(err))
     res.sendStatus(200);
 });
 
